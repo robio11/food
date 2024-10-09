@@ -6,11 +6,12 @@ import { Button } from '../components/ui/button'
 import { Separator } from '../components/ui/separator'
 import { Link } from 'react-router-dom'
 import { ChangeEvent, FormEvent, useState } from 'react'
+import { LoginInputState, userLoginSchema } from '../schema/userSchema'
 
-interface LoginInputState {
-  email : string;
-  password:string;
-}
+// interface LoginInputState {
+//   email : string;
+//   password:string;
+// }
 // interface LoginInputWithAge extends LoginInputState {
 //   age : string;
 // }
@@ -24,12 +25,19 @@ const Login = () => {
     email:"",
     password:"",
   });
+  const [errors,setErrors] = useState<Partial<LoginInputState>>({});
   const changeEventHandler = (e:ChangeEvent<HTMLInputElement>) => {
     const {name,value} = e.target;
     setInput({...input,[name]:value});
   }
   const loginSumbitHandler = (e:FormEvent) => {
     e.preventDefault();
+    const result = userLoginSchema.safeParse(input);
+    if(!result.success){
+      const fieldErrors = result.error.formErrors.fieldErrors;
+      setErrors(fieldErrors as Partial<LoginInputState>);
+      return;
+    }
     console.log(input);
   }
 
@@ -43,7 +51,7 @@ const Login = () => {
         action=""
         className="md:border md:p-8 max-w-md border-gray-200 rounded-lg mx-4 w-full"
       >
-        <div>
+        <div className="mb-4" >
           <h1 className="font-bold text-2xl">Food Chain</h1>
         </div>
         <div className="mb-4">
@@ -57,6 +65,7 @@ const Login = () => {
               onChange={changeEventHandler}
             />
             <Mail className="absolute inset-y-2 left-2 text-gray-500 pointer-events-none" />
+            {errors && <span className="text-sm text-red-500" >{errors.email}</span>}
           </div>
         </div>
         <div className="mb-4">
@@ -70,6 +79,7 @@ const Login = () => {
               onChange={changeEventHandler}
             />
             <LockKeyhole className="absolute inset-y-2 left-2 text-gray-500 pointer-events-none" />
+            {errors && <span className="text-sm text-red-500" >{errors.password}</span>}
           </div>
         </div>
         <div className="mb-10" >
