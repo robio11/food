@@ -43,7 +43,7 @@ const Signup = () => {
         className="md:border md:p-8 max-w-md border-gray-200 rounded-lg mx-4 w-full"
         onSubmit={singupSumbitHandler}
       >
-        <div className="mb-4" >
+        <div className="mb-4 text-center">
           <h1 className="font-bold text-2xl">Food Chain</h1>
         </div>
         <div className="mb-4">
@@ -117,9 +117,9 @@ const Signup = () => {
           )}
         </div>
         <Separator />
-        <p className="mt-2">
+        <p className="mt-2 font-semibold">
           Already have an account {''}
-          <Link to="/login" className="text-blue-500">
+          <Link to="/login" className="text-blue-500 underline">
             Login
           </Link>
         </p>

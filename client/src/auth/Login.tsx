@@ -42,7 +42,7 @@ const Login = () => {
   }
 
   const loading = false;
-  // const navigate = useNavigate()
+  // const navigate = useNavigate();
 
   return (
     <div className="flex items-center justify-center min-h-screen">
@@ -51,7 +51,7 @@ const Login = () => {
         action=""
         className="md:border md:p-8 max-w-md border-gray-200 rounded-lg mx-4 w-full"
       >
-        <div className="mb-4" >
+        <div className="mb-4 text-center" >
           <h1 className="font-bold text-2xl">Food Chain</h1>
         </div>
         <div className="mb-4">
@@ -92,11 +92,14 @@ const Login = () => {
             Login
           </Button>
         )}
+        <div>
+          <Link className="hover:text-blue-500 hover:underline font-semibold text-sm" to="/forgetpassword" >Forget Password</Link>
+        </div>
         </div>
         <Separator/>
-        <p className="mt-2" >
+        <p className="mt-2 font-semibold">
           Don't have an account {""}
-          <Link to="/signup" className="text-blue-500" >Signup</Link>
+          <Link to="/signup" className="text-blue-500 underline" >Signup</Link>
         </p>
       </form>
     </div>
