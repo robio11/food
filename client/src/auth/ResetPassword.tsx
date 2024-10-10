@@ -1,35 +1,35 @@
-import { Loader2, Mail } from "lucide-react"
-import { Separator } from "../components/ui/separator"
-import { Link } from "react-router-dom"
-import { Button } from "../components/ui/button"
-import { useState } from "react"
-import { Input } from "../components/ui/input"
+import { useState } from "react";
+import { Input } from "../components/ui/input";
+import { Loader2, LockKeyhole } from "lucide-react";
+import { Button } from "../components/ui/button";
+import { Separator } from "../components/ui/separator";
+import { Link } from "react-router-dom";
 
-const ForgotPassword = () => {
-    const [email, setEmail] = useState<string>("");
+const ResetPassword = () => {
+    const [newPassword, setNewPassword] = useState<string>("");
     const loading =  false;
 
   return (
-    <div className="flex items-center justify-center min-h-screen w-full">
+    <div className="flex items-center justify-center min-h-screen">
       <form
         action=""
         className="md:border md:p-8 max-w-md border-gray-200 rounded-lg mx-4 w-full"
       >
         <div className="text-center mb-4">
-          <h1 className="font-bold text-2xl">Forget Password</h1>
-          <p className="text-sm text-gray-600 font-semibold">Enter your email address to reset your password</p>
+          <h1 className="font-bold text-2xl">Reset Password</h1>
+          <p className="text-sm text-gray-600 font-semibold">Enter your new password to reset old new</p>
         </div>
         <div className="mb-4">
           <div className="relative w-full">
             <Input
-              type="email"
-              placeholder="Enter your email"
-              name="email"
+              type="password"
+              placeholder="Enter your new Password"
+              name="password"
               className="pl-10 focus-visible:ring-1"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
             />
-            <Mail className="absolute inset-y-2 left-2 text-gray-500 pointer-events-none" />
+            <LockKeyhole className="absolute inset-y-2 left-2 text-gray-500 pointer-events-none" />
           </div>
         </div>
         <div className="mb-10" >
@@ -39,7 +39,7 @@ const ForgotPassword = () => {
           </Button>
         ) : (
           <Button type="submit" className="bg-Orange hover:bg-hoverOrange w-full">
-            Send Reset Link
+            Reset Password
           </Button>
         )}
         </div>
@@ -53,4 +53,4 @@ const ForgotPassword = () => {
   )
 }
 
-export default ForgotPassword
+export default ResetPassword
