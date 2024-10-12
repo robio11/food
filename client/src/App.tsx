@@ -7,12 +7,29 @@ import Home from './components/Home'
 import ForgotPassword from './auth/ForgotPassword'
 import ResetPassword from './auth/ResetPassword'
 import VerfiyEmail from './auth/VerfiyEmail'
+import HeroSection from './components/HeroSection'
+import Profile from './components/Profile'
+import SearchPage from './components/SearchPage'
 
 const appRouter = createBrowserRouter([
   {
     path: "/",
     element: 
-        <Home />
+        <Home />,
+        children:[
+          {
+            path:"/",
+            element:<HeroSection/>
+          },
+          {
+            path:"/profile",
+            element:<Profile/>
+          },
+          {
+            path:"/search/:id",
+            element:<SearchPage/>
+          },
+        ]
   },
   {
     path: "/login",
